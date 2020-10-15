@@ -38,12 +38,22 @@ const App = () => {
       ]
     })
   }
+
+// Inline Styling  
+  const style = {
+    backgroundColor: 'white',
+    font: 'inherit',
+    border: '1px solid blue',
+    padding: '8px',
+    borderRadius: '20px',
+    cursor: 'pointer'
+  }
   
     return (
       <div className="App">
         <h1>This is a React App</h1>
         <p>This is really working!</p>
-        <button onClick={switchNameHandler.bind(this, 'COCO!!')} >Switch Name</button>
+        <button style={style} onClick={switchNameHandler.bind(this, 'COCO!!')} >Switch Name</button>
         <Person name={personsState.persons[0].name} age={personsState.persons[0].age}>Favorite Food: Pizza</Person>
         <Person name={personsState.persons[1].name} age={personsState.persons[1].age} />
         <Person name={personsState.persons[2].name} age={personsState.persons[2].age} inputName={nameInputHandler} />
