@@ -18,7 +18,7 @@ const App = () => {
     otherState: 'Some value'
   })
   
-  const [ showPerson, setShowpersons ] = useState(false);
+  const [ showPersons, setShowpersons ] = useState(false);
 
 //  EVENT HANDLERS =================================================================
   const switchNameHandler = (newName) => {
@@ -42,7 +42,7 @@ const App = () => {
   }
 
   const togglePersonHandler = () => {
-
+    setShowpersons(!showPersons);
   }
 
 // Inline Styling ================================================================= 
@@ -56,19 +56,24 @@ const App = () => {
   }
   
 // RENDER ==========================================================================
-  return (
-    <div className="App">
-      <h1>This is a React App</h1>
-      <p>This is really working!</p>
-      <button style={style} onClick={togglePersonHandler} >Switch Name</button>
-      
-      { showPerson ? 
+  let personsDiv = null;
+
+  if (showPersons) {
+    personsDiv = (
       <div >
         <Person name={personsState.persons[0].name} age={personsState.persons[0].age}>Favorite Food: Pizza</Person>
         <Person name={personsState.persons[1].name} age={personsState.persons[1].age} />
         <Person name={personsState.persons[2].name} age={personsState.persons[2].age} inputName={nameInputHandler} />
-      </div> : null
-      }
+      </div>
+    )
+  }
+
+  return (
+    <div className="App">
+      <h1>This is a React App</h1>
+      <p>This is really working!</p>
+      <button style={style} onClick={togglePersonHandler}>Toggle Persons</button>
+      {personsDiv}
     </div>
   ); 
   }
